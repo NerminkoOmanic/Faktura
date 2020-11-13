@@ -1,0 +1,30 @@
+﻿@model Faktura.Areas.Radnik.Models.RadnikDetailsVM
+@{
+    ViewData["Title"] = "Faktura";
+    Layout = "_LayoutRadnik";
+}
+
+<div class="row pv-lg">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Ime : </label>
+            <label class="col-sm-4 control-label">@Model.Fname</label>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Prezime : </label>
+            <label class="col-sm-4 control-label">@Model.Lname</label>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Email : </label>
+            <label class="col-sm-4 control-label">@Model.Email</label>
+        </div>
+        <hr />
+        <div class="form-group">
+            <label class="col-sm-3 control-label">JMBG(OIB)  : </label>
+            <label class="col-sm-4 control-label">@Model.Jmbg</label>
+        </div>
+    </div>
+</div>
