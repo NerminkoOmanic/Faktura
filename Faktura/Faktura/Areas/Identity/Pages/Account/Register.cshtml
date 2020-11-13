@@ -30,6 +30,21 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label>Ime : </label>
+                <input asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Prezime : </label>
+                <input asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>JMBG(OIB) : </label>
+                <input asp-for="Input.Jmbg" class="form-control" />
+                <span asp-validation-for="Input.Jmbg" class="text-danger"></span>
+            </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
