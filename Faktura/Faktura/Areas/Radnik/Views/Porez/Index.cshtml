@@ -1,0 +1,40 @@
+﻿@model Faktura.Areas.Radnik.Models.PorezListVM
+@{
+    ViewData["Title"] = "Faktura";
+    Layout = "_LayoutRadnik";
+}
+
+@{
+    ViewData["Title"] = "Prikazi";
+
+
+}
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Lista poreza
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered"  width="100%">
+                <thead>
+                <tr>
+                    <th>Drzava</th>
+                    <th>Iznos pdv-a(%)</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var x in Model.Rows)
+                {
+                    <tr>
+                        <td>@x.Drzava</td>
+                        <td>@x.Iznos</td>
+
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<a class="btn btn-info  col-md-2 font-sizes float-right" href="#" style="float:right"><i class="fas fa-plus-circle"></i>Dodaj porez</a>
