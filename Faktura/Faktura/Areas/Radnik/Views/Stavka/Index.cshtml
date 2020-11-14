@@ -1,4 +1,4 @@
-﻿@model Faktura.Areas.Radnik.Models.PorezListVM
+﻿@model Faktura.Areas.Radnik.Models.StavkeListVM
 @{
     ViewData["Title"] = "Faktura";
     Layout = "_LayoutRadnik";
@@ -12,23 +12,23 @@
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-table"></i>
-        Lista poreza
+        Lista stavki
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered"  width="100%">
                 <thead>
                 <tr>
-                    <th>Drzava</th>
-                    <th>Iznos pdv-a(%)</th>
+                    <th>Opis stavke</th>
+                    <th>Cijena (po kom.)</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach (var x in Model.Rows)
                 {
                     <tr>
-                        <td>@x.Drzava</td>
-                        <td>@x.Iznos</td>
+                        <td>@x.OpisStavke</td>
+                        <td>@x.Cijena</td>
 
                     </tr>
                 }
@@ -37,7 +37,7 @@
         </div>
     </div>
 </div>
-<a class="btn btn-info  col-md-2 font-sizes float-right" style="float:right" asp-controller="Porez" asp-action="DodajPV" ajax-poziv="da" ajax-rezultat="ajaxDiv"><i class="fas fa-plus-circle"></i>Dodaj porez</a>
+<a class="btn btn-info  col-md-2 font-sizes float-right" style="float:right" asp-controller="Stavka" asp-action="DodajPV" ajax-poziv="da" ajax-rezultat="ajaxDiv"><i class="fas fa-plus-circle"></i>Dodaj stavku</a>
 <br/>
 <br/>
 <br/>

@@ -8,11 +8,11 @@
     <form asp-controller="Porez" asp-action="DodajPV" method="post">
         <div class="form-group">
             <label asp-for="@Model.Drzava">Drzava</label>
-            <input type="text" class="form-control" asp-for="@Model.Drzava" placeholder="Unesite ime drzave">
+            <input type="text" class="form-control" asp-for="@Model.Drzava" placeholder="Unesite ime drzave" required>
         </div>
         <div class="form-group">
             <label asp-for="@Model.IznosPoreza">Iznos Pdv-a(%) : </label>
-            <input type="number"class="form-control" asp-for="@Model.IznosPoreza" >
+            <input type="number"class="form-control" asp-for="@Model.IznosPoreza" required>
         </div>
         <button type="submit" class="btn btn-success">Spremi</button>
     </form>
