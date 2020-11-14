@@ -1,0 +1,22 @@
+﻿@model Faktura.Areas.Radnik.Models.PorezDodajVM
+@{
+    ViewData["Title"] = "Faktura";
+}
+
+<div class="container border-info" style="width: 400px">
+    <h4>Dodaj porez</h4>
+    <form asp-controller="Porez" asp-action="DodajPV" method="post">
+        <div class="form-group">
+            <label asp-for="@Model.Drzava">Drzava</label>
+            <input type="text" class="form-control" asp-for="@Model.Drzava" placeholder="Unesite ime drzave">
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.IznosPoreza">Iznos Pdv-a(%) : </label>
+            <input type="number"class="form-control" asp-for="@Model.IznosPoreza" >
+        </div>
+        <button type="submit" class="btn btn-success">Spremi</button>
+    </form>
+</div>
+
+
+

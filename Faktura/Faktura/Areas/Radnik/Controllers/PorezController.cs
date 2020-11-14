@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Faktura.Areas.Radnik.Models;
 using Faktura.Data;
+using Faktura.Data.EntityModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Faktura.Areas.Radnik.Controllers
@@ -32,6 +33,32 @@ namespace Faktura.Areas.Radnik.Controllers
                 }).ToList()
             };
             return View(model);
+        }
+
+        public IActionResult DodajPV()
+        {
+            PorezDodajVM model = new PorezDodajVM();
+            return PartialView(model);
+        }
+
+        [HttpPost]
+        public IActionResult DodajPV(PorezDodajVM input)
+        {
+            if (!ModelState.IsValid)
+            {
+                return PartialView(input);
+            }
+
+            Pdv v = new Pdv()
+            {
+                Drzava = input.Drzava,
+                IznosPdv = Convert.ToDecimal(input.IznosPoreza)/100
+            };
+            _db.Add(v);
+            _db.SaveChanges();
+            _db.Dispose();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
