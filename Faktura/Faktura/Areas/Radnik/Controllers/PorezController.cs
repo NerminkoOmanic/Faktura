@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Faktura.Areas.Radnik.Models;
 using Faktura.Data;
 using Faktura.Data.EntityModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Faktura.Areas.Radnik.Controllers
 {
+    [Authorize(Roles = "Radnik")]
     [Area("Radnik")]
     public class PorezController : Controller
     {

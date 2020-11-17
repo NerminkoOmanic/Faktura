@@ -5,12 +5,14 @@ using Faktura.Areas.Radnik.Models;
 using Faktura.Data;
 using Faktura.Data.EntityModels;
 using Faktura.Util;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Faktura.Areas.Radnik.Controllers
 {
+    [Authorize(Roles = "Radnik")]
     [Area("Radnik")]
     public class FakturaController : Controller
     {
