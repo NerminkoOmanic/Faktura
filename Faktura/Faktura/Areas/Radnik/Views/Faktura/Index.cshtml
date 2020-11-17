@@ -1,0 +1,51 @@
+﻿@model Faktura.Areas.Radnik.Models.FaktureListVM
+
+
+@{
+    ViewData["Title"] = "Faktura";
+    Layout = "_LayoutRadnik";
+}
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Lista faktura
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%">
+                <thead>
+                    <tr>
+                        <th style="width: 5%">Br.</th>
+                        <th style="width: 15%">Radnik</th>
+                        <th style="width: 15%">Kupac</th>
+                        <th style="width: 15%">  Datum izdavanja</th>
+                        <th style="width: 15%">Rok uplate</th>
+                        <th style="width: 10%">Ukupno</th>
+                        <th style="width: 15%">Ukupno(sa PDV)</th>
+                        <th style="width: 10%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.Rows)
+                    {
+                    <tr>
+                        <td>@x.FakturaId</td>
+                        <td><a asp-controller="Faktura" asp-action="DetaljiRadnik" asp-route-radnikId="@x.RadnikId">@x.ImePrezime</a></td>
+                        <td>@x.Kupac</td>
+                        <td>@x.DatumIzdavanja</td>
+                        <td>@x.RokPlacanja</td>
+                        <td>@x.UkupnaCijenaBezPdv</td>
+                        <td>@x.UkupnaCijenaSaPdv</td>
+                        <td><a asp-controller="Faktura" asp-action="Detalji" asp-route-fakturaId="@x.FakturaId"><b>Detalji</b></a></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<a class="btn btn-info  col-md-2 font-sizes float-right" style="float:right" asp-controller="Faktura" asp-action="Dodaj" asp-route-radnikId="@Model.RadnikId"><i class="fas fa-plus-circle"></i>Napravi novu fakturu</a>
+<br />
+<br />
+<br />
+

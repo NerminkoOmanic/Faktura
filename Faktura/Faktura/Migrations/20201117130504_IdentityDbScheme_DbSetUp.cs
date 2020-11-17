@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Faktura.Migrations
 {
-    public partial class SetUpProject_IdentityDbScheme : Migration
+    public partial class IdentityDbScheme_DbSetUp : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -194,8 +194,7 @@ namespace Faktura.Migrations
                     Iznos = table.Column<decimal>(type: "decimal(5, 2)", nullable: false),
                     IznosSaPdv = table.Column<decimal>(type: "decimal(5, 2)", nullable: false),
                     AppUserId = table.Column<string>(nullable: true),
-                    PdvId = table.Column<string>(nullable: true),
-                    PdvId1 = table.Column<int>(nullable: true),
+                    PdvId = table.Column<int>(nullable: false),
                     Kupac = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -208,11 +207,11 @@ namespace Faktura.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Faktura_Pdv_PdvId1",
-                        column: x => x.PdvId1,
+                        name: "FK_Faktura_Pdv_PdvId",
+                        column: x => x.PdvId,
                         principalTable: "Pdv",
                         principalColumn: "PdvId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -288,9 +287,9 @@ namespace Faktura.Migrations
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Faktura_PdvId1",
+                name: "IX_Faktura_PdvId",
                 table: "Faktura",
-                column: "PdvId1");
+                column: "PdvId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FakturaStavka_FakturaId",

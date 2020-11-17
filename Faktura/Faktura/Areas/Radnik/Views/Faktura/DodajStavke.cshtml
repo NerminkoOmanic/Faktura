@@ -1,0 +1,76 @@
+﻿@model Faktura.Areas.Radnik.Models.FakturaStavkeVM
+
+
+@{
+    ViewData["Title"] = "Faktura";
+    Layout = "_LayoutRadnik";
+}
+<form asp-controller="Faktura" asp-action="DodajStavke" method ="post">
+    <div class="card mb-3">
+        <div class="card-header">
+            Dodajte stavke fakture : <b>@Model.FakturaId</b><br/>
+            Radnik :                 <b>@Model.ImePrezime</b><br />
+            Datum izdavanja:         <b>@Model.DatumIzdavanja</b><br />
+            Rok placanja:            <b>@Model.RokPlacanja</b><br />
+            Pdv:                     <b>@Model.IznosPdvString</b><br />
+            Kupac:                   <b>@Model.Kupac</b>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Opis stavke</th>
+                            <th>Cijena (po kom.)</th>
+                            <th>Kolicina</th>
+                            <th>Ukupno</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model.Rows)
+                        {
+                            <tr>
+                                <td>@x.OpisStavke</td>
+                                <td>@x.CijenaStavkeBezPdv</td>
+                                <td>@x.Kolicina</td>
+                                <td>@x.UkupnoZaStavku</td>
+                                <td>
+                                    <a class="btn btn-danger"
+                                       asp-controller="Faktura" asp-action="IzbrisiStavku" asp-route-id="@x.FakturaStavkaId">
+                                        Ukloni stavku
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <input asp-for="@Model.FakturaId" hidden="hidden" />
+
+            <label asp-for="@Model.UkupnoBezPoreza" class="text-right">Ukupno (bez PDV-a) :  @Model.UkupnoBezPoreza</label><br />
+            <input asp-for="@Model.UkupnoBezPoreza" hidden="hidden" />
+            
+            <label asp-for="@Model.UkupnoSaPorezom" class="text-right">Ukupno (sa PDV-om) :  @Model.UkupnoSaPorezom</label><br />
+            <input asp-for="@Model.UkupnoSaPorezom" hidden="hidden"/>
+
+            <a class="btn btn-success  col-md-2 font-sizes float-right" style="float: right"
+               asp-controller="Faktura" asp-action="DodajStavkePV" asp-route-fakturaId="@Model.FakturaId" ajax-poziv="da" ajax-rezultat="ajaxDiv">
+                Dodaj stavku
+            </a><br />
+        </div>
+    </div>
+    <a class="btn btn-danger  col-md-2 font-sizes float-left"
+       asp-controller="Faktura" asp-action="BackEdit" asp-route-fakturaId="@Model.FakturaId">
+        Back
+    </a>
+    <button type ="submit" class="btn btn-info  col-md-2 font-sizes float-right" style="float: right" >Zavrsi fakturu</button>
+</form>
+<br />
+<br />
+<br />
+<div id="ajaxDiv">
+
+</div>
+
+

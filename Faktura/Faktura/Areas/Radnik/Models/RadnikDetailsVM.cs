@@ -12,10 +12,11 @@ namespace Faktura.Areas.Radnik.Models
         public string Lname { get; set; }
         public string Email { get; set; }
         public string Jmbg { get; set; }
-
+        public string RadnikId {get; set; }
 
         public RadnikDetailsVM(AppUser user)
         {
+            RadnikId = user.Id;
             Fname = user.FirstName;
             Lname = user.LastName;
             Email = user.Email;

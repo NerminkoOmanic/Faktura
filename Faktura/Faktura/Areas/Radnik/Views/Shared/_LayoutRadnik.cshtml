@@ -25,7 +25,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item ">
-                            <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Fakture</a>
+                            <a class="nav-link text-dark" asp-controller="Faktura" asp-action="Index" asp-route-radnikId="@this.User.FindFirstValue(ClaimTypes.NameIdentifier)">Fakture</a>
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link text-dark"  asp-controller="Stavka" asp-action="Index">Stavke</a>

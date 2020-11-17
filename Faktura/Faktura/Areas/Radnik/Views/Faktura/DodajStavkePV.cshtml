@@ -1,0 +1,25 @@
+﻿@model Faktura.Areas.Radnik.Models.FakturaDodajStavkuVM
+@{
+    ViewData["Title"] = "Faktura";
+}
+
+<div class="container border-info" style="width: 400px">
+    <h4>Dodaj stavku</h4>
+    <form asp-controller="Faktura" asp-action="DodajStavkePV" method="post">
+        <div class="form-group">
+            <input hidden="hidden" asp-for="@Model.FakturaId" />
+            <label>Izaberite stavku : </label>
+            <select asp-for="@Model.StavkaId" asp-items="@Model.StavkeList" class="form-control col-md-12" required>
+                <option value="">Odaberite</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label >Unesite kolicinu: </label>
+            <input type="number"class="form-control" asp-for="@Model.Kolicina" required>
+        </div>
+        <button type="submit" class="btn btn-success">Dodaj</button>
+    </form>
+</div>
+
+
+

@@ -1,0 +1,59 @@
+﻿@model Faktura.Areas.Radnik.Models.FakturaStavkeVM
+
+
+@{
+    ViewData["Title"] = "Faktura";
+    Layout = "_LayoutRadnik";
+}
+<div class="card mb-3">
+    <div class="card-header">
+        Dodajte stavke fakture : <b>@Model.FakturaId</b><br />
+        Radnik :                 <b>@Model.ImePrezime</b><br />
+        Datum izdavanja:         <b>@Model.DatumIzdavanja</b><br />
+        Rok placanja:            <b>@Model.RokPlacanja</b><br />
+        Pdv:                     <b>@Model.IznosPdvString</b><br />
+        Kupac:                   <b>@Model.Kupac</b>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%">
+                <thead>
+                    <tr>
+                        <th>Opis stavke</th>
+                        <th>Cijena (po kom.)</th>
+                        <th>Kolicina</th>
+                        <th>Ukupno</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.Rows)
+                    {
+                        <tr>
+                            <td>@x.OpisStavke</td>
+                            <td>@x.CijenaStavkeBezPdv</td>
+                            <td>@x.Kolicina</td>
+                            <td>@x.UkupnoZaStavku</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <input asp-for="@Model.RadnikId" hidden="hidden" />
+
+        <label asp-for="@Model.UkupnoBezPoreza" class="text-right">Ukupno (bez PDV-a) :  @Model.UkupnoBezPoreza</label><br />
+
+        <label asp-for="@Model.UkupnoSaPorezom" class="text-right">Ukupno (sa PDV-om) :  @Model.UkupnoSaPorezom</label><br />
+
+
+    </div>
+</div>
+<a class="btn btn-info  col-md-2 font-sizes float-right"
+   asp-controller="Faktura" asp-action="Index" asp-route-radnikId="@Model.RadnikId">
+    Back
+</a>
+<br />
+<br />
+<br />
+
+
+

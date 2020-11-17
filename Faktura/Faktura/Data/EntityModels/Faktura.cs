@@ -29,10 +29,10 @@ namespace Faktura.Data
 
 
         [ForeignKey("PdvId")]
-        public string PdvId {get; set;}
+        public int PdvId {get; set;}
         public virtual Pdv Pdv { get; set; }
 
-
+        
         public string Kupac {get; set;}
         public List<FakturaStavka> Stavke { get; set; }
 

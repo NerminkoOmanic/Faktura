@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Faktura.Migrations
 {
     [DbContext(typeof(FakturaDbContext))]
-    [Migration("20201112161520_SetUpProject_IdentityDbScheme")]
-    partial class SetUpProject_IdentityDbScheme
+    [Migration("20201117130504_IdentityDbScheme_DbSetUp")]
+    partial class IdentityDbScheme_DbSetUp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -181,10 +181,7 @@ namespace Faktura.Migrations
                     b.Property<string>("Kupac")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PdvId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PdvId1")
+                    b.Property<int>("PdvId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("RokPlacanja")
@@ -194,7 +191,7 @@ namespace Faktura.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.HasIndex("PdvId1");
+                    b.HasIndex("PdvId");
 
                     b.ToTable("Faktura");
                 });
@@ -353,7 +350,9 @@ namespace Faktura.Migrations
 
                     b.HasOne("Faktura.Data.EntityModels.Pdv", "Pdv")
                         .WithMany()
-                        .HasForeignKey("PdvId1");
+                        .HasForeignKey("PdvId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
