@@ -1,6 +1,6 @@
 # About the project
-Web application for issuing factura(electronic invoice) of unspecified company
-Developed in asp.net core using C#
+Web application for issuing factura(electronic invoice) of unspecified company  
+Developed in asp.net core using C#  
 MVC desing pattern used
 
 # Build with
